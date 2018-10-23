@@ -32,12 +32,18 @@
 <% elsif params[:vote] == "policy"  %>
     <div class="col-11 list-filters">
       <ul class="sort-fraction text-uppercase">
-        <li <%= params[:policy].blank? ? "class=active-fon-fraction col col-4": "col col-4" %>><%= link_to "Максимально підтримує", people_detal_path(@mp.url_name, vote: "policy"  ), remote: true %></li>
-        <li <%= params[:policy] == "2" ? "class=active-fon-fraction col col-4": "col col-4" %>><%= link_to "Послідовно підтримує", people_detal_path(@mp.url_name, vote: "policy", policy: 2), remote: true %></li>
-        <li <%= params[:policy] == "3" ? "class=active-fon-fraction col col-4": "col col-4" %>><%= link_to "Переважно підтримує", people_detal_path(@mp.url_name, vote: "policy", policy: 3 ), remote: true %></li>
-        <li <%= params[:policy] == "4" ? "class=active-fon-fraction col col-4": "col col-4" %>><%= link_to "Як підтримує, так і ні", people_detal_path(@mp.url_name, vote: "policy", policy:4 ), remote: true %></li>
-        <li <%= params[:policy] == "5" ? "class=active-fon-fraction col col-4": "col col-4" %>><%= link_to "Переважно не підтримує", people_detal_path(@mp.url_name, vote: "policy", policy:5 ), remote: true %></li>
-        <li <%= params[:policy] == "6" ? "class=active-fon-fraction col col-4": "col col-4" %>><%= link_to "Ніколи не підтримує", people_detal_path(@mp.url_name, vote: "policy", policy:6 ), remote: true %></li>
+        <div style="display: flex; justify-content: space-around">
+          <li <%= params[:policy].blank? ? "class=active-fon-fraction col col-4": "col col-4" %>><%= link_to "Максимально голосує за", people_detal_path(@mp.url_name, vote: "policy"  ), remote: true %></li>
+          <li <%= params[:policy] == "2" ? "class=active-fon-fraction col col-4": "col col-4" %>><%= link_to "Послідовно голосує за", people_detal_path(@mp.url_name, vote: "policy", policy: 2), remote: true %></li>
+          <li <%= params[:policy] == "3" ? "class=active-fon-fraction col col-4": "col col-4" %>><%= link_to "Переважно голосує за", people_detal_path(@mp.url_name, vote: "policy", policy: 3 ), remote: true %></li>
+          <li <%= params[:policy] == "4" ? "class=active-fon-fraction col col-4": "col col-4" %>><%= link_to "Суміш за та проти", people_detal_path(@mp.url_name, vote: "policy", policy:4 ), remote: true %></li>
+        </div>
+       <div style="display: flex; justify-content: space-around ">
+         <li <%= params[:policy] == "5" ? "class=active-fon-fraction col col-4": "col col-4" %>><%= link_to "Переважно голосує проти", people_detal_path(@mp.url_name, vote: "policy", policy:5 ), remote: true %></li>
+         <li <%= params[:policy] == "6" ? "class=active-fon-fraction col col-4": "col col-4" %>><%= link_to "Послідовно голосує проти", people_detal_path(@mp.url_name, vote: "policy", policy:6 ), remote: true %></li>
+         <li <%= params[:policy] == "7" ? "class=active-fon-fraction col col-4": "col col-4" %>><%= link_to "Максимально голосує проти", people_detal_path(@mp.url_name, vote: "policy", policy:7 ), remote: true %></li>
+         <li <%= params[:policy] == "8" ? "class=active-fon-fraction col col-4": "col col-4" %>><%= link_to "Ніколи не голосує", people_detal_path(@mp.url_name, vote: "policy", policy:8), remote: true %></li>
+       </div>
       </ul>
       <div id="list_policy">
         <%= render "policy", policies: @policies %>

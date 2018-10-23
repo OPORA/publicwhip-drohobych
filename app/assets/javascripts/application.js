@@ -60,9 +60,9 @@ function CreateRadialBar( wrapper ) {
     var strokeSpacing = wrapper.dataset.strokeSpacing;
     var start = 0;
     var end = parseFloat(wrapper.dataset.percentage);
-    var radius = 100;
+    var radius = 58;
     var endAngle = Math.PI * 2;
-    var formatText = d3.format('.0%');
+    var formatText = d3.format('%');
     var boxSize = radius * 2;
     var count = end;
     var progress = start;
@@ -112,7 +112,7 @@ function CreateRadialBar( wrapper ) {
         .attr('class', 'radial-progress__text')
         .attr('fill', colours.text)
         .attr('text-anchor', 'middle')
-        .attr('dy', '.5rem');
+        .attr('dy', '.6rem');
 
     function update(progress) {
         //update position of endAngle

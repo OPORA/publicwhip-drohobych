@@ -33,6 +33,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'config'
+gem 'paper_trail'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -59,5 +60,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
 gem 'markdown-rails'
+gem 'redcarpet'
 gem "mini_magick"
 gem 'kaminari'

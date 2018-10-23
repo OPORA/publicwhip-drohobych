@@ -1,6 +1,18 @@
-<h1>Editing Policy</h1>
+<% content_for :title, "Редагувати політику — Як Голосує Твій Депутат?" %>
 
-<%= render 'form', policy: @policy %>
+<div id="first-block" class="container people">
+  <h1 class="text-uppercase center-justified text-xs-center">Редагувати політику</h1>
+</div>
 
-<%= link_to 'Show', @policy %> |
-<%= link_to 'Back', policies_path %>
+<div class="container">
+  <div id="policy">
+    <%= render('edit') %>
+  </div>
+
+
+</div>
+
+
+
+<%#= link_to 'Show', @policy %> |
+<%#= link_to 'Back', policies_path %>

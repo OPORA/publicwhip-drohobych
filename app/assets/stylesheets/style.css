@@ -97,11 +97,17 @@ header{
 /*#navbarCollapse{
     padding-top: .25rem;
 }*/
+.navbar-nav > li.span {
+    padding-top: 0.5rem;
+}
 .navbar-nav > li > a{
     padding-left: 49px !important;
     line-height: 28px;
     font-size: 14px;
     color: #fff!important;
+}
+.navbar-nav > li > a.reg-link {
+    padding-left: 7px!important;
 }
 .navbar{
     padding: 1.5rem 1rem;
@@ -175,7 +181,7 @@ header{
     font-family: GothaProReg;
     font-size: 14px;
     line-height: 21px;
-    padding: 6px 15px 6px 35px;
+    padding: 11px 15px 7px 35px;
     background-color: Transparent;
     border:none;
     cursor:pointer;
@@ -549,4 +555,123 @@ footer span+span{
 }
 footer {
     margin-top: 30px;
+}
+
+#forkongithub a {
+    background:#000;
+    color:#fff;
+    text-decoration:none;
+    font-family:arial, sans-serif;
+    text-align:center;
+    font-weight:bold;
+    padding:5px 5px;
+    font-size:1rem;
+    line-height:2rem;
+    position:relative;
+    transition:0.5s;
+}
+#forkongithub a:hover{
+    background:#c11;
+    color:#fff;
+}
+#forkongithub a::before,
+#forkongithub a::after{
+    content:"";
+    width:100%;
+    display:block;
+    position:absolute;
+    top:43px;
+    left:0;
+    height:1px;
+    background:#fff;
+}
+#forkongithub a::after{
+    bottom:1px;
+    top:0px;
+}
+@media screen and (min-width:800px){
+    #forkongithub{
+        position:relative;
+        /*display:block;*/
+        top:60px;
+        right:0;
+        width:100px;
+        overflow:hidden;
+        height:200px;
+        z-index:1;}
+    #forkongithub a{
+        width:500px;
+        position:absolute;
+        top:85px;
+        right:-360px;
+        transform:rotate(-45deg);
+        -webkit-transform:rotate(-45deg);
+        -ms-transform:rotate(-45deg);
+        -moz-transform:rotate(-45deg);
+        -o-transform:rotate(-45deg);
+        box-shadow:4px 4px 10px rgba(0,0,0,0.8);
+    }
+}
+
+#forkongithub a {
+    background:#919992;
+    color:#fff;
+    text-decoration:none;
+    font-family:arial, sans-serif;
+    text-align:center;
+    font-weight:bold;
+    padding:5px 5px;
+    font-size:1rem;
+    line-height:2rem;
+    position:relative;
+    transition:0.5s;
+}
+#forkongithub a:hover{
+    background:#c11;
+    color:#fff;
+}
+#forkongithub a::before,
+#forkongithub a::after{
+    content:"";
+    width:100%;
+    display:block;
+    position:absolute;
+    top:43px;
+    left:0;
+    height:1px;
+    background:#fff;
+}
+#forkongithub a::after{
+    bottom:1px;
+    top:0px;
+}
+@media screen and (min-width:800px){
+    #forkongithub{
+        position:relative;
+        /*display:block;*/
+        top:60px;
+        right:0;
+        width:100px;
+        overflow:hidden;
+        height:200px;
+        z-index:1;}
+    #forkongithub a{
+        width:440px;
+        position:absolute;
+        top:40px;
+        right:-360px;
+        transform:rotate(-45deg);
+        -webkit-transform:rotate(-45deg);
+        -ms-transform:rotate(-45deg);
+        -moz-transform:rotate(-45deg);
+        -o-transform:rotate(-45deg);
+        box-shadow:4px 4px 10px rgba(0,0,0,0.8);
+    }
+}
+.radial-progress__text {
+    color: #4A4A4A;
+    font-family: Roboto;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 30px;
 }

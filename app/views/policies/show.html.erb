@@ -5,17 +5,29 @@
 </div>
 <div class="container-fluid team">
   <div class="container">
-    <%#= link_to 'Edit', edit_policy_path(@policy) %>
+    <%= link_to 'Редагувати', edit_policy_path(@policy), class: "pull-right" %>
 
     <p><strong><%= @policy.name %></strong></p>
-
+    <%= link_to 'Історія редагувань', policy_path(@policy, history: 1), class: "pull-right" %>
     <p><%= @policy.description %></p>
 
   </div>
 
 </div>
-<div id="detal">
-  <%= render "show" %>
+
+  <% if params[:history]=="1" %>
+      <div id="divisionshow" class="container">
+        <h2 class="text-uppercase center-justified text-xs-center">Історія редагувань</h2>
+      </div>
+      <div class="container">
+        <div id="list_history">
+     <%= render 'layouts/history' %>
+        </div>
+      </div>
+  <% else %>
+    <div id="detal">
+    <%= render "show" %>
+  <% end %>
 </div>
 
 

@@ -29,7 +29,15 @@
                 </div>
             </div>
             <% end %>
+          <%  if controller.action_name == "edit"  %>
+              <div class="actions">
+                <%= link_to 'Вилучити з політики', d, method: :delete, data: { confirm: 'Are you sure?' } , style: "margin-top: 20px; margin-left: 63px;margin-right:20px; "%>
+                <%= link_to 'Змінити позицію щодо політики', edit_policy_division_path(d) %>
+
+              </div>
+          <% end %>
         </div>
+
         <% end %>
     </div>
 </div>

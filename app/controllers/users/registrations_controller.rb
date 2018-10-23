@@ -36,7 +36,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/edit
   def edit
+    if  params[:sort].nil?
+      history()
+    end
     super
+
   end
 
   # PUT /resource
@@ -60,6 +64,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def new_reg
 
   end
+  def history
+    if params[:user_id]
+      user = params[:user_id].to_i
+    else
+      user = current_user.id
+    end
+    @history = PaperTrail::Version.where(whodunnit: user).order(created_at: :desc ).page(params[:page]).per(4)
+  end
 
   protected
 
@@ -78,7 +90,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super(resource)
   end
 
-  # The path used after sign up for inactive accounts.
+  # The path used after siget '/auth/new_reg', to: "users/registrations#new_reg"gn up for inactive accounts.
   def after_inactive_sign_up_path_for(resource)
     #super(resource)
     auth_new_reg_path

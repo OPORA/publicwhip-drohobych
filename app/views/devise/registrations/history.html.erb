@@ -1,0 +1,10 @@
+<% content_for :title, "Історія редагувань користувача"  +  user_name + " — Як Голосує Твій Депутат?" %>
+
+<div id="first-block" class="container people">
+  <h1 class="text-uppercase center-justified text-xs-center">Історія редагувань користувача <%= user_name %></h1>
+</div>
+<div class="container">
+  <div id="list_history">
+    <%= render('layouts/history') %>
+  </div>
+</div>

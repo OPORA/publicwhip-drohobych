@@ -3,8 +3,9 @@
     <li <%= params[:sort].nil? ? "class=disabled": "" %> ><%= link_to "За прізвищем", people_path(),  :remote => true %></li>
     <li <%= params[:sort] == "faction" ? "class=disabled": "" %> ><%= link_to "За Фракцією", people_path(sort: :faction),  :remote => true %></li>
     <li <%= params[:sort] == "distric" ? "class=disabled": "" %> ><%= link_to "За Округом", people_path(sort: :distric), :remote => true %></li>
-    <li <%= params[:sort] == "rebellions" ? "class=disabled": "" %> ><%= link_to "За Дотриманням фракційної дисципліни", people_path(sort: :rebellions), :remote => true %></li>
     <li <%= params[:sort] == "attendance" ? "class=disabled": "" %> ><%= link_to "За Присутністю", people_path(sort: :attendance), :remote => true %></li>
+    <li <%= params[:sort] == "rebellions" ? "class=disabled": "" %> ><%= link_to "За Дотриманням фракційної дисципліни", people_path(sort: :rebellions), :remote => true %></li>
+
   </ul>
 
   <% if params[:sort].nil? %>

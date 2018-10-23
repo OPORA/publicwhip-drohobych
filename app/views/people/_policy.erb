@@ -18,7 +18,11 @@
                   <div class="row check">
                       <div class="col-6 text-uppercase float-left">
                           <p class="checkin">оновлення даних</p>
-                          <p class="card-percent"><%= p.updated_at.strftime('%d.%m.%Y / %H:%M') %></p>
+                           <% if !p.policy_divisions.blank? %>
+                          <p class="card-percent"><%= p.policy_divisions.last.updated_at.strftime('%d.%m.%Y / %H:%M') %></p>
+                            <% else %>
+                            <p class="card-percent"><%= p.updated_at.strftime('%d.%m.%Y / %H:%M') %></p>
+                            <% end %>
                       </div>
                       <div class="col-6 text-uppercase">
                           <p class="checkin">голосувань</p>

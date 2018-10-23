@@ -1,6 +1,7 @@
 class PolicyDivisionsController < ApplicationController
   before_action :set_policy_division, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, only: [ :edit, :update, :destroy, :create]
+  before_action :set_paper_trail_whodunnit
   # GET /policy_divisions
   # GET /policy_divisions.json
   def index
@@ -36,7 +37,7 @@ class PolicyDivisionsController < ApplicationController
 
     respond_to do |format|
       if @policy_division.save
-        format.html { redirect_to policy_path(@policy_division.policy_id), notice: 'Голосування в політику було добавлено' }
+        format.html { redirect_to policy_path(@policy_division.policy_id), notice: 'Голосування було додано у політику' }
         format.json { render :show, status: :created, location: @policy_division }
       else
         @division = Division.find(@policy_division.division_id)
@@ -53,7 +54,7 @@ class PolicyDivisionsController < ApplicationController
   def update
     respond_to do |format|
       if @policy_division.update(policy_division_params)
-        format.html { redirect_to policy_path(@policy_division.division_id), notice: 'Голосування в політиці оновлено' }
+        format.html { redirect_to policy_path(@policy_division.policy_id), notice: 'Голосування в політиці оновлено' }
         format.json { render :show, status: :ok, location: @policy_division }
       else
         @division = Division.find(@policy_division.division_id)
@@ -69,7 +70,7 @@ class PolicyDivisionsController < ApplicationController
   def destroy
     @policy_division.destroy
     respond_to do |format|
-      format.html { redirect_to policy_divisions_url, notice: 'Голосування в політиці видалено' }
+      format.html { redirect_to policies_path, notice: 'Голосування в політиці видалено' }
       format.json { head :no_content }
     end
   end
@@ -78,6 +79,7 @@ class PolicyDivisionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_policy_division
       @policy_division = PolicyDivision.find(params[:id])
+      @policy = Policy.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

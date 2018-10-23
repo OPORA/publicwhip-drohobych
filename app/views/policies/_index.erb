@@ -3,7 +3,7 @@
   <ul class="sort-first text-uppercase">
     <li <%= params[:filter].nil? ? "class=disabled": "" %> ><%= link_to "Опубліковані політики", params.merge(filter: nil), remote: true %></li>
     <li <%= params[:filter] == "provisional" ? "class=disabled": "" %> ><%= link_to "Проекти політик", params.merge(filter: :provisional), remote: true %></li>
-    <%= link_to 'СТВОРИТИ НОВУ ПОЛІТИКУ', new_policy_path, class: "new-policy" if user_signed_in? %>
+    <%= link_to 'СТВОРИТИ НОВУ ПОЛІТИКУ', new_policy_path, class: "new-policy"  %>
   </ul>
   <% end %>
   <div id="list_policy">

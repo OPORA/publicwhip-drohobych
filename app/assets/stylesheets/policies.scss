@@ -26,6 +26,19 @@
   font-size: 11px;
   font-weight: 500;
 }
+.no_act:link, .no_act:visited, .no_act {
+  border: 1px solid #009FE2!important;
+  color:  #009FE2!important;
+  border-radius: 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 500;
+  background-color: white!important;
+}
+
 
 .new-policy:hover, .new-policy:active {
   background-color: #009FE2;
@@ -136,7 +149,7 @@ input[type="submit"] {
   height: 25px;
   width: 158px;
   border-radius: 12px;
-  border: 0!important;
+  border: 0;
   background-color: #009FE2;
   color: #FFFFFF;
   //font-family: Roboto;
@@ -179,6 +192,12 @@ circle {
 .against circle {
 fill: #FEB0B0;
 }
+.aye_strong circle {
+  fill: green;
+}
+.against_strong circle {
+  fill: red;
+}
 #list_mp .row{
   display: table;
   table-layout: fixed;
@@ -218,9 +237,9 @@ a .card-mp p,  a .card-mp  p:hover{
   width: 100px;
   color: #282828;
   font-family: Roboto;
-  font-size: 8px;
+  font-size: 12px;
   font-weight: 500;
-  line-height: 10px;
+  line-height: 12px;
   text-align: center;
   margin-top: 15px;
   margin-bottom: 25px;

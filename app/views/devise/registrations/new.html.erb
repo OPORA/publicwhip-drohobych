@@ -36,7 +36,7 @@
       <div class="field">
         <strong><%= f.label :password, "Пароль" %></strong><br />
         <% if @minimum_password_length %>
-            <span>Надійний пароль містить не меньше <%= @minimum_password_length %> знаків, ціфри та спеціальні символи</span>
+            <span>Надійний пароль містить не менше <%= @minimum_password_length %> знаків, цифри та спеціальні символи</span>
         <% end %><br />
         <%= f.password_field :password, autocomplete: "off" %>
       </div>

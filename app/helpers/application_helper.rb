@@ -8,4 +8,7 @@ module ApplicationHelper
   def last_update_rada
     Division.order(updated_at: :asc).pluck(:updated_at).last.strftime('%d.%m.%Y / %H:%M')
   end
+  def user_name
+    User.find(params[:user_id]).user_name
+  end
 end

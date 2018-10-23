@@ -1,9 +1,9 @@
 module PoliciesHelper
   def result_support(res)
-    p res
+    #p res
     case res
       when "against_strong"
-        '<svg class="svg col against" >
+        '<svg class="svg col against_strong" >
         <g>
         <circle cx=50 cy=50 r=25></circle>
                                 <g transform="translate(34.062731, 29.000000) scale(1, -1) translate(-31.062731, -33.000000) translate(35.000000, 0.000000)">
@@ -30,7 +30,7 @@ module PoliciesHelper
                             </g>
         </svg><p  class="text-xs-center">за</p>'.html_safe
       when "aye_strong"
-        '<svg class="svg col" >
+        '<svg class="svg col aye_strong" >
         <g>
         <circle cx=50 cy=50 r=25></circle>
                                 <g transform="translate(35.000000, 35.000000)">

@@ -35,6 +35,8 @@
     <% end %>
 
 <% end %>
+<div class="index-pagination">
 <% unless mpsp.last_page? %>
     <%= link_to('<h4 class="text-uppercase text-center">Більше <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></h4>'.html_safe,  people_next_path(params.merge(page: mpsp.current_page + 1 )), remote: true, :id=>'load_more_link')  %>
 <% end %>
+</div>

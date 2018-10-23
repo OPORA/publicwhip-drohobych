@@ -1,0 +1,19 @@
+<div class="list-filters clearfix">
+  <ul class="sort-first text-uppercase">
+    <li <%= params[:sort].nil? ? "class=disabled": "" %> ><%= link_to "Опис політики", params.merge(sort: nil), remote: true %></li>
+    <li <%= params[:sort] == "vote" ? "class=disabled": "" %> ><%= link_to "Пов’язані голосування (" + @policy.policy_divisions.size.to_s  + ")", params.merge(sort: :vote), remote: true %></li>
+  </ul>
+</div>
+<% if  params[:sort].nil?  %>
+    <%= render 'form', policy: @policy %>
+<% else %>
+    <div class="row" style="margin-bottom: 40px">
+      <div class="col col-1"></div>
+      <div class="col col-9">
+        <p class="text-justifyr">Аби додати голосування до політики, на сторінці кожного голосування є відповідна опція. Якщо ти ще не редагував Політики, будь ласка, прочитай
+          <a href="">Що таке Політики та як це працює?</a>.</p>
+      </div>
+
+    </div>
+    <%= render "voted", division: @policy.policy_divisions %>
+<% end %>

@@ -1,11 +1,12 @@
 <div class="row">
+  <% unless @policy.policy_divisions.size == 0 %>
   <% mps.each do |mp| %>
       <%= link_to show_people_path(mp.mp.url_name), class: "" do %>
       <div class="card-mp">
-          <img  src="https://drohobych.rada4you.org/image/<%= mp.mp.deputy_id %>.png" alt="<%=  mp.mp.full_name  %>">
+          <img  src="/image/<%= mp.mp.deputy_id %>.png" alt="<%=  mp.mp.full_name  %>">
           <p><%=mp.mp.full_name %></p>
       </div>
          <% end %>
-
+  <% end %>
   <% end %>
 </div>

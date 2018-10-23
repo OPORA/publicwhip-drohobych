@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "heder";
 
-#divisionshow .card {
+#divisionshow .first {
   border: none;
   outline: none;
   margin-bottom: 60px;
@@ -116,4 +116,77 @@ input[type="submit"] {
   background-color: #F5F5F5;
   padding: 30px 0;
   margin-bottom: 40px;
+}
+
+input[type=radio] {
+  //display: none;
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+input[type="radio"]:invalid +label {
+  position: relative;
+}
+
+input[type=radio]+label {
+  height: 111px;
+  width: 140px;
+  border: 1px solid #E5E5E5;
+  border-radius: 4px;
+  display: inline-block;
+  //margin: -2px;
+  //padding: 4px 12px;
+  //margin-bottom: 0;
+  margin-right: 20px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #333;
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  vertical-align: middle;
+  cursor: pointer;
+
+
+}
+.first-rd {
+  margin-right: 60px;
+}
+
+input[type=radio]:checked+label {
+
+  outline: 0;
+  border: 2px solid #009FE2;
+}
+.field-radio {
+  display: flex;
+}
+label span {
+  color: #282828;
+  font-family: Roboto;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+
+}
+circle {
+  fill: #C3D7A5;
+  stroke-width: 1;
+  width:52px;
+  height:52px
+}
+.against  circle{
+  fill: #FEB0B0;
+}
+.against-strong circle
+{
+  fill: red;
+}
+.aye_strong circle
+{
+  fill: green;
+}
+svg {
+  height: 80px;
+  width: 120px;
+  margin-left: 13px
 }

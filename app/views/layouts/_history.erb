@@ -1,0 +1,48 @@
+<% @history.each do |r|  %>
+    <div class="col-12">
+      <% if r.item_type == "PolicyDivision" %>
+          <p>В політиці: <strong><%= link_to policy_name(r.policy_id), policy_path(r.policy_id) %></strong></p>
+          <% if r.event == "create" %>
+              <p>Додано голосування: "<%= link_to divisions_name(r.division_id), divisions_show_path(div_path(r.division_id)) %>"</p>
+              <p>Голосування щодо політики визначене як “<%=  display_support(r.changeset["support"].second)  %>”.</p>
+          <% elsif  r.event == "update"  %>
+              <p>Оновлено голосування: "<%= link_to divisions_name(r.division_id), divisions_show_path(div_path(r.division_id)) %>"</p>
+              <p>Голосування щодо політики визначене з “<%=  display_support(r.changeset["support"].first)  %>” на “<%=  display_support(r.changeset["support"].second)  %>”.</p>
+          <% else %>
+              <p>Видалено голосування: "<%= link_to divisions_name(r.division_id), divisions_show_path(div_path(r.division_id)) %>"</p>
+              <p>Голосування щодо політики визначалось як “<%=  display_support(most_recent_version(r.item_type, r.item_id ).changeset["support"].second)  %>”.</p>
+          <% end %>
+      <% else %>
+          <% if r.event == "create" %>
+              <p>Створено проект політики <strong>"<%=  link_to r.changeset["name"].second,  policy_path(r.policy_id) %>"</strong> з описом “<%= r.changeset["description"].second %>”.</p>
+          <% else %>
+              <p>Оновлено <strong>"<%= link_to policy_name(r.item_id), policy_path(r.policy_id) %>"</strong> </p>
+              <% if r.changeset["name"] %>
+                  <p>Назву змінено з <strong>"<%=  link_to r.changeset["name"].first, policy_path(r.policy_id) %>"</strong> на <strong>"<%= link_to r.changeset["name"].second, policy_path(r.policy_id) %>"</strong></p>
+              <% end %>
+              <% if r.changeset["description"] %>
+                  <p>Опис змінено з <strong>"<%= r.changeset["description"].first %>"</strong> на <strong>"<%= r.changeset["description"].second %>"</strong></p>
+              <% end %>
+              <% if r.changeset["provisional"] %>
+                  <p>Змінено статус на <%= r.changeset["provisional"].second ? "не проект" : "проект" %>.</p>
+              <% end %>
+          <% end %>
+      <% end %>
+      <% if controller.controller_path=="policies" %>
+          <p><%= link_to User.find(r.whodunnit).user_name, user_history_path(r.whodunnit) %>, <%= r.created_at.strftime('%d.%m.%Y / %H:%M') %></p>
+      <% else %>
+        <p><%= r.created_at.strftime('%d.%m.%Y / %H:%M') %></p>
+      <% end %>
+      <hr>
+    </div>
+
+<% end %>
+<div class="index-pagination">
+  <% unless @history.last_page? or @history.blank? %>
+      <% if controller.controller_path=="policies" %>
+        <%= link_to('<h4 class="text-uppercase text-center">Більше <i class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></i></h4>'.html_safe, history_policy_path(params.merge(page: @history.current_page + 1)), remote: true, id: "load_more_link" ) %>
+      <% else %>
+          <%= link_to('<h4 class="text-uppercase text-center">Більше <i class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></i></h4>'.html_safe, auth_history_path(params.merge(page: @history.current_page + 1)), remote: true, id: "load_more_link" ) %>
+<% end %>
+  <% end %>
+</div>

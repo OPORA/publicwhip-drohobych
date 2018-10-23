@@ -12,15 +12,19 @@
   <% end %>
     <strong>Якщо ти за</strong>
   <div class="field">
+    <%  if controller.action_name == "new"  %>
     <%= form.label :name, "Заверши речення, надавши короткий, конкретний опис" %> <br>
+     <% end %>
     <%= form.text_field :name, id: :policy_name, placeholder: "напр., За реформування системи охорони дитинства" %>
   </div>
     <strong>Ти віриш, що</strong>
     <div class="field">
+      <%  if controller.action_name == "new"  %>
       <%= form.label :description, "Опиши переконання, яке має депутат, який підтримує Політику" %> <br>
-      <%= form.text_area :description, id: :description, placeholder: "напр., парламент повинен адаптувати до нових реалій застарілу і неповоротку систему охорони дитинства, що мала б ефективно вирішувати питання сирітства та соціального захисту тощо" %>
+          <% end %>
+      <%= form.text_area :description, id: :description, placeholder: "напр., міська рада повинна адаптувати до нових реалій застарілу і неповоротку систему охорони дитинства, що мала б ефективно вирішувати питання сирітства та соціального захисту тощо" %>
     </div>
-
+    <%  if controller.action_name == "new"  %>
     <div>
       <p>Після того, як політика створена, ти зможеш підв'язувати до неї голосування і бачити, як ті депутати, які
         підтримують таку політику, могли голосувати. Rada4you порівнює справжнє голосування депутатів з твоїм вибором і
@@ -34,14 +38,32 @@
       <ul>
         <li>Приватність — Створивши політику, вона буде закріплена за тобою <%= current_user.user_name %> як за автором</li>
         <li>Ліцензування — Ти згідний/на, що все, що ти створюєш на цьому сайті підпадає під Creative Commons Attribution License
-          <a href=""><u>Чому?</u></a></li>
+        <a data-toggle="collapse" href="#collapseWhy" role="button" aria-expanded="false" aria-controls="collapseWhy">
+          <strong>Чому?</strong>
+        </a></li>
+        <div class="alert alert-info  collapse" id="collapseWhy" role="alert">
+
+            <p>Інформація, яка розміщена на сайті, поширюється у відповідності до <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a>  Міжнародної ліцензії.
+              Вона передбачає, що інформація може бути використана, поширена будь-ким. </p>
+
+            <p>Кожен, хто долучається до створення чи редагування політик також погоджується, що їхня робота буде ліцензована у відповідності до
+              <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a> Міжнародної ліцензії.</p>
+
+        </div>
       </ul>
 
     </div>
+        <% end %>
+
 
 
   <div class="actions">
-    <%= form.submit "Зберігти проект політики"%>
+    <%  if controller.action_name == "new"  %>
+        <%= form.submit "Зберегти проект політики"%>
+    <% else %>
+        <%= form.submit "Зберегти зміни"%>
+        <%= form.submit "Зберегти проект політики", class: "no_act" %>
+    <% end %>
     <%= link_to 'Скасувати', policies_path %>
   </div>
 <% end %>
