@@ -11,8 +11,8 @@ require 'mina/rvm'    # for rvm support. (http://rvm.io)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
 set :domain, 'ruby.oporaua.org'
-set :deploy_to, "/home/publicwhip-ternopil/"
-set :repository, "git@github.com:OPORA/publicwhip-ternopil.git"
+set :deploy_to, "/home/publicwhip-drohobych/"
+set :repository, "git@github.com:OPORA/publicwhip-drohobych.git"
 set :branch, 'policy'
 
 # For system-wide RVM install.
