@@ -10,7 +10,7 @@ require 'mina/rvm'    # for rvm support. (http://rvm.io)
 #   repository   - Git repo to clone from. (needed by mina/git)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
-set :domain, 'ruby.oporaua.org'
+set :domain, '3.127.176.58'
 set :deploy_to, "/home/publicwhip-drohobych/"
 set :repository, "git@github.com:OPORA/publicwhip-drohobych.git"
 set :branch, 'policy'
@@ -19,8 +19,8 @@ set :branch, 'policy'
 set :rvm_use_path,  '/usr/local/rvm/scripts/rvm'
 set :keep_releases, 2
 ## Optional settings:
-set :user, 'root'          # Username in the server to SSH to.
-set :port, '1122'           # SSH port number.
+set :user, 'ubuntu'          # Username in the server to SSH to.
+#set :port, '1122'           # SSH port number.
 #   set :forward_agent, true     # SSH forward_agent.
 
 # shared dirs and files will be symlinked into the app-folder by the 'deploy:link_shared_paths' step.
