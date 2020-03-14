@@ -5,16 +5,34 @@
 </div>
 <div class="container-fluid team">
   <div class="container">
-    <%= link_to 'Редагувати', edit_policy_path(@policy), class: "pull-right" %>
-
-    <p><strong><%= @policy.name %></strong></p>
-    <%= link_to 'Історія редагувань', policy_path(@policy, history: 1), class: "pull-right" %>
-    <p><%= @policy.description %></p>
-
+    <div class="row">
+    <div class="col-12 col-lg-9">
+     <h2><strong><%= @policy.name %></strong></h2>
+      <p><%= @policy.description %></p>
+    </div>
+    <div class="col-12 col-lg-3">
+       <ul class="social row pull-right text-uppercase">
+            <li class="col-12">
+              <%= link_to edit_policy_path(@policy) do %>
+                    <span class="fa-stack ">
+                      <i class="fa fa-square-o fa-stack-2x"></i>
+                      <i class="fa  fa-download  fa-stack-1x"></i>
+                    </span>Редагувати
+              <% end %>
+            </li>
+            <li class="col-12">
+              <%= link_to policy_path(@policy, history: 1) do %>
+                    <span class="fa-stack ">
+                      <i class="fa fa-square-o fa-stack-2x"></i>
+                      <i class="fa  fa-download  fa-stack-1x"></i>
+                    </span>Історія редагувань
+              <% end %>
+            </li>
+        </ul>    
+    </div>
+    </div>
   </div>
-
 </div>
-
   <% if params[:history]=="1" %>
       <div id="divisionshow" class="container">
         <h2 class="text-uppercase center-justified text-xs-center">Історія редагувань</h2>

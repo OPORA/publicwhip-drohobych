@@ -2,10 +2,12 @@
 <div class="list-filters clearfix">
   <ul class="sort-first text-uppercase">
     <li <%= params[:sort].nil? ? "class=disabled": "" %> ><%= link_to "Історія змін", params.merge(sort: nil), remote: true %></li>
-    <li <%= params[:sort] == "subscription" ? "class=disabled": "" %> ><%= link_to "Підписки", params.merge(sort: :subscription), remote: true %></li>
+    <!--<li <%#= params[:sort] == "subscription" ? "class=disabled": "" %> ><%#= link_to "Підписки", params.merge(sort: :subscription), remote: true %></li>-->
     <li <%= params[:sort] == "edit" ? "class=disabled": "" %> ><%= link_to "Редагувати особисті дані", params.merge(sort: :edit), remote: true %></li>
-    <li><%= link_to "Вихід", destroy_user_session_path, method: :delete, class: "destroy exit pull-right" %></li>
+    <li><%= link_to "Вихід", destroy_user_session_path, method: :delete, class: "destroy exit " %></li>
   </ul>
+  
+
 </div>
   <% if  params[:sort].nil?  %>
     <div id="list_history">

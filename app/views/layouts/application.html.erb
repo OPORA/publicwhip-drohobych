@@ -76,7 +76,7 @@ gtag('config', '<%= Settings.gtag %>');
           </ul>
 
           <ul class="navbar-nav">
-            <li class="nav-item">
+            <li class="nav-item d-none d-sm-none d-md-none d-lg-block">
               <div class="button-search">
                 <i class="fa fa-search" aria-hidden="true"></i>
                 <input type="button" value="Пошук" class="btn btn-primary" data-toggle="modal" data-target="#ModalSearch" >
@@ -129,6 +129,7 @@ gtag('config', '<%= Settings.gtag %>');
 
               <div class="row justify-content-end">
               <% if controller.controller_path != "errors" %>
+              <% unless controller.controller_path == "policy_pepole" %>
               <div class="col-lg-3 col-6 update-data">
                           <span class="fa-stack">
                               <i class="fa fa-clock-o fa-stack-1x fa-inverse" aria-hidden="true"></i>
@@ -136,6 +137,7 @@ gtag('config', '<%= Settings.gtag %>');
                 <p class="text-uppercase">Оновлення даних</p>
                 <p><%= last_update_rada %></p>
               </div>
+              <%end%>
               <div class="col-lg-3 col-6 rada-date">
                           <span class="fa-stack">
                               <i class="fa fa-clock-o fa-stack-1x fa-inverse" aria-hidden="true"></i>

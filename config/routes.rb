@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'policy_pepole/index'
+  get 'person_policy/:mp/:id' => 'policy_pepole#index', as: :show_person_policy 
   get 'policy_divisions/:id/edit' => 'policy_divisions#edit', as: :edit_policy_division
   get 'policy_divisions/:date/:id' => 'policy_divisions#new', as: :new_policy_division
   get 'policy_divisions/:date/:id/policy' => 'policy_divisions#policy', as: :get_policy_division

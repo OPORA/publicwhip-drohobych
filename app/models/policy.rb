@@ -15,7 +15,7 @@ class Policy < ApplicationRecord
   scope :never_voted,           -> { where("same = 0 and same_strong = 0 and diff = 0 and diff_strong = 0") }
 
   def self.filter_polices(param)
-    if param.nil?
+    if param =="1"
       very_strongly_for
     elsif param =="2"
       strongly_for

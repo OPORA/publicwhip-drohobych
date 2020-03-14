@@ -17,11 +17,12 @@ class PolicyDivisionsController < ApplicationController
   def new
     @policy_division = PolicyDivision.new
     get_policy()
-    @policy = Policy.all
+    @policy = Policy.all - @policies_all
   end
   def get_policy
     @division = Division.find_by(date: params[:date], number: params[:id])
-    @policies = Policy.joins(:policy_divisions).where("policy_divisions.division_id = ?", @division.id ).page(params[:page]).per(4)
+    @policies_all = Policy.joins(:policy_divisions).where("policy_divisions.division_id = ?", @division.id )
+    @policies = @policies_all.page(params[:page]).per(4)
   end
   def policy()
     get_policy

@@ -44,12 +44,19 @@
           </datalist>
         <% end %>
     </div>
+    <script>  
+    $(document).ready(function($) {
+      $('#party').change(function() {
+        $('#search-main').submit();
+      });
+  });
+  </script>
 </div>
 
 <div class="container">
     <div class="row list-filters clearfix">
-        <ul class="col sort-first text-uppercase">
-            <li <%= params[:month] == "full" ? "class=disabled": "" %> ><%= link_to "За весь час", sumisne_holosuvannia_path(month: :full) %></li>
+        <ul class="col sort-first text-uppercase d-none d-sm-none d-md-none d-lg-block">
+            <li <%= params[:month] == "full" ? "class=disabled": "" %> ><%= link_to "За весь час", sumisne_holosuvannia_path(params.merge(month: :full)) %></li>
 
             <li <%= params[:month] != "full" ? "class=disabled": "" %> >
                 <div class="dropdown">
@@ -65,7 +72,7 @@
         </ul>
 
 
-        <ul class="social col-4 pull-right text-uppercase">
+        <ul class="social col-sm-12 col-md-4 pull-right text-uppercase">
             <li>
                     <span class="fa-stack ">
                       <i class="fa fa-square-o fa-stack-2x"></i>
@@ -89,6 +96,12 @@
 
             </li>
         </ul>
+        <select style="margin: 20px 10px "class="mobile_select d-block d-md-none" onchange="window.location.href=this.value;">
+        <option <%= params[:month] == "full" ? 'selected="selected"': ''%> value="<%= sumisne_holosuvannia_path(params.merge(month: :full))  %>">за весь час</option>
+          <% @month.each do |m| %>
+            <option <%= params[:month] == m.strftime('%Y-%m') ? 'selected="selected"' : "" %> value="<%= sumisne_holosuvannia_path(params.merge(month: m.strftime('%Y-%m'))) %>"><%=month(m.strftime('%Y-%m'))%></option>
+          <% end %>
+        </select>
     </div>
 </div>
 

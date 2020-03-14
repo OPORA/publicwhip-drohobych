@@ -1,0 +1,76 @@
+// Place all the styles related to the PolicyPepole controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "heder";
+.media-heading{
+  // margin-bottom: 80px;
+    color: #252525;
+    font-family: GothaProBol;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 24px;
+    text-align: center;
+}
+div.img {
+    padding-bottom: 100%;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: top center;
+    margin: 35px 0;
+  }
+  .circle-photo{
+    height: 200px;
+    width:200px;
+    clip-path: circle(100px at center);
+    border-radius: 100px;
+  }
+  .frac {
+  
+    color: #4A4A4A;
+    font-family: GothaProReg;
+    font-size: 16px;
+    line-height: 16px;
+    text-align: center;
+    margin-top: 25px
+  }
+  .voted_mp > svg > g >circle {
+    fill: #FFDD2D;
+  }
+  .voted_mp > svg > circle {
+    fill: #FFDD2D;
+  }
+  circle {
+    fill: #C3D7A5;
+    stroke-width: 1;
+    width:52px;
+    height:52px
+  }
+  .against  circle{
+    fill: #FEB0B0;
+  }
+  .against-strong circle
+  {
+    fill: red;
+  }
+  .aye_strong circle
+  {
+    fill: green;
+  }
+  svg {
+    height: 80px;
+    width: 120px;
+    //margin-left: 13px
+  }
+  .voted_mp > svg {
+      margin-left: 13px;
+  } 
+  #stat{
+    background-color: #F5F5F5;
+  }
+  #det, #stat{
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  .first{
+    margin-bottom: 50px;
+  }

@@ -1,0 +1,29 @@
+<div id="depytat" class="container">
+  <h1 class="media-heading center-justified"><%=  @mp.full_name  %></h1>
+  <div class="row  align-items-center center-justified first">
+    
+         <div class="col text-uppercase">
+         </div>
+        <div class="col">
+            <div class="img" style="background-image: url('/image/<%= @mp.deputy_id %>.png');"></div>
+            <p class="frac"><%= member_role(@mp.faction, @mp.okrug).html_safe %></p>
+        </div>
+        <div class="col text-uppercase">
+        </div>  
+ </div>     
+</div>  
+<div id="stat" class="container-fluid ">
+  <div class="container">
+    <div class="row">
+    <h1 class="media-heading center-justified"><%= for_policy(@policy.policy_person_distances.find_by(deputy_id: @mp.deputy_id)) %>:</h1>  
+    <h2><%= link_to @policy.name,  policy_path(@policy.id)   %></h2>
+    </div>
+  </div>
+</div>
+<div class="container">
+ <hr>
+</div> 
+ <div id="list_vote">
+
+        <%= render "voted", division: @policy.policy_divisions %>
+</div>

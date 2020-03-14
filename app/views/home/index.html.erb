@@ -18,6 +18,13 @@
             <% end %>
           </datalist>
       <% end %>
+      <script>
+      $(document).ready(function($) {
+          $('#mp').change(function() {
+            $('#search-main').submit();
+          });
+      });
+      </script>
     </div>
   </div>
 </div>
@@ -63,44 +70,44 @@
 <div id="second-block" class="container-fluid">
     <div class="col-12"><h3 class="text-uppercase text-center background-line">Прогульники засідань</h3></div>
   <div class="container">
-    <% @top_mp_rebellions.each_with_index do |mp, i| %>
+    <% @top_mp_rebellions.each_with_index do |m, i| %>
+           <% if i % 2 == 0  %>
+        <div class="row">
+    <% end %>
 
-
-      <% if i % 2 == 0  %>
-      <div class="row">
-      <% end %>
-
-        <div class="col-12 col-lg-6">
-          <div class="col-12 card card-person ">
-          <%= link_to show_people_path(mp.url_name), class: "" do %>
+    <div class="col-lg-6">
+      <div class="col card card-person ">
+        <%= link_to show_people_path(m.url_name), class: "" do %>
             <div class="row">
-              <div class="col-4 col-md-3">
-                <div class="img" style="background-image: url('/image/<%= mp.deputy_id %>.png');"></div>
-<!--                <img class="card-photo" src="/image/<%#= mp.deputy_id %>.png" alt="">-->
-
+              <div class="col-3">
+                <div class="img" style="background-image: url('/image/<%= m.deputy_id %>.png');"></div>
+<!--                <img class="card-photo" src="/image/<%#= m.deputy_id %>.png" alt="<%#=  m.full_name  %>">-->
               </div>
-              <div class="col-8 col-md-9">
-                <p class="card-name"><%= mp.full_name %></p>
-                <p class="card-fraction">Фракція "<%= mp.faction %>"</p>
-                <p class="card-elected"><!--Обрано за списком партії з 10.2014--></p>
+              <div class="col-9">
+                <p class="card-name"><%=  m.full_name  %></p>
+                <p class="card-fraction">Фракція <%= member_role(m.faction, m.okrug).html_safe %></p>
+                <p class="card-elected"><!--Обрано за списком партії  XXXX --></p>
 
                 <div class="row check">
                   <div class="col-6 text-uppercase float-left">
                     <p class="checkin">присутність</p>
-                    <p class="card-percent"><%= fraction_to_percentage_display(mp.mp_info.attendance_fraction) %> засідань</p></div>
+                    <p class="card-percent"><%= fraction_to_percentage_display(m.mp_info.attendance_fraction) %> засідань</p></div>
                   <div class="col-6 text-uppercase">
                     <p class="checkin">проти фракції</p>
-                    <p class="card-percent"><%= fraction_to_percentage_display(mp.mp_info.rebellions_fraction) %> голосувань</p></div>
+                    <p class="card-percent"><%= fraction_to_percentage_display(m.mp_info.rebellions_fraction) %> голосувань</p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <% end %>
+            </div>
+        <% end %>
         </div>
 
-      <% if i % 2 == 1  %>
-      </div>
-      <% end %>
+    <% if i % 2== 1 %>
+        </div>
+    <% end %>
+
+
 
 
     <% end %>

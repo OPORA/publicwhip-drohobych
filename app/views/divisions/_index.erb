@@ -1,9 +1,15 @@
 <div class="list-filters clearfix">
-  <ul class="sort-first text-uppercase">
+  <ul class="sort-first text-uppercase d-none d-sm-none d-md-none d-lg-block">
     <li <%= params[:sort] == "date" ? "class=disabled": "" %> ><%= link_to "За Датою", params.merge(sort: :date, filter_min: nil, filter_max: nil), remote: true %></li>
     <li <%= params[:sort] == "attendance" ? "class=disabled": "" %> ><%= link_to "За Присутністю", params.merge(sort: :attendance, filter_min: nil, filter_max: nil, min_date:nil, max_date: nil, last: nil), remote: true %></li>
     <li <%= params[:sort] == "rebellions" ? "class=disabled": "" %> ><%= link_to "ЗА ФРАКЦІЙНОЮ ДИСЦИПЛІНОЮ", params.merge(sort: :rebellions, filter_min: nil, filter_max: nil, min_date:nil, max_date: nil, last: nil), remote: true %></li>
   </ul>
+  <select class="mobile_select d-block d-md-none" onchange="window.location.href=this.value;">
+      <option  <%= params[:sort]== "date" ? 'selected="selected"': ''%> value="<%=divisions_path(params.merge(sort: :date, filter_min: nil, filter_max: nil))%>">За Датою</option>
+      <option <%= params[:sort]== "attendance" ? 'selected="selected"': ''%> value="<%=divisions_path(params.merge(sort: :attendance, filter_min: nil, filter_max: nil, min_date:nil, max_date: nil, last: nil))%>">За Присутністю</option>
+      <option <%= params[:sort] == "rebellions" ? 'selected="selected"': ''%> value="<%=divisions_path(params.merge(sort: :rebellions, filter_min: nil, filter_max: nil, min_date:nil, max_date: nil, last: nil))%>">ЗА ФРАКЦІЙНОЮ ДИСЦИПЛІНОЮ</option>
+  </select>
+
 
   <% if params[:sort] == "attendance" %>
       <div id="slider-range">
@@ -18,19 +24,22 @@
   <% end %>
 
   <% if params[:sort] == "date" %>
-      <ul class="sort-fraction">
+      <ul class="sort-fraction d-none d-sm-none d-md-none d-lg-block">
         <li <%= params[:last] == "3" ? 'class="active-fon-fraction"'.html_safe : ""  %>><%= link_to "За останні 3 місяця", params.merge(last: "3"), remote: true %></li>
         <li <%= params[:last] == "1" ? 'class="active-fon-fraction"'.html_safe : ""  %>><%= link_to "За останній пленарний місяць", params.merge(last: "1"), remote: true %></li>
       </ul>
-    <div id="calendar" class="text-xs-center text-uppercase">
+
+    <div id="calendar" class="row text-xs-center text-uppercase">
+      <div class="col-12 col-lg-4" style="margin:20px 0">
       <label for="from">за період з</label>
       <input type="text" id="from" name="from" value="<%= params[:min_date] %>">
         <i class="fa fa-chevron-down arrow-icon date-pointer" aria-hidden="true"></i>
-
+      </div>
+      <div class="col-12 col-lg-4" style="margin:20px 0">
       <label for="to">до</label>
       <input type="text" id="to" name="to" value="<%= params[:max_date] %>">
         <i class="fa fa-chevron-down arrow-icon date-pointer" aria-hidden="true"></i>
-
+      </div>
     </div>
       <script>
 

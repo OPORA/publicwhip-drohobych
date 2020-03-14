@@ -7,7 +7,7 @@
         <% else %>
           <% policies.each do |p| %>
           <div class="col-12 col-md-6" style="margin-bottom: 25px">
-              <%= link_to show_person_policy_path(@mp.url_name, p.id), class: "" do %>
+              <%= link_to policy_path(p.id), class: "" do %>
               <div class="col-12 pull-right card" style="padding: 25px 30px">
                   <div class="row text-uppercase">
 

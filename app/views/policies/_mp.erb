@@ -1,7 +1,7 @@
 <div class="row">
   <% unless @policy.policy_divisions.size == 0 %>
   <% mps.each do |mp| %>
-      <%= link_to show_people_path(mp.mp.url_name), class: "" do %>
+      <%= link_to show_person_policy_path(mp.mp.url_name, @policy.id), class: "" do %>
       <div class="card-mp">
         <div class="img" style="background-image: url('/image/<%= mp.deputy_id %>.png');"></div>
 <!--          <img  src="/image/<%#= mp.mp.deputy_id %>.png" alt="<%#=  mp.mp.full_name  %>">-->

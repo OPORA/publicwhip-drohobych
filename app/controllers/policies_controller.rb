@@ -1,12 +1,12 @@
 class PoliciesController < ApplicationController
-  before_action :set_policy, only: [:show, :edit, :update, :destroy]
+  before_action :set_policy, only: [:edit, :update, :destroy]
+  before_action :set_policy_with_mps, only: [:show]
   before_action :authenticate_user!, only: [ :new, :edit, :update, :destroy, :create]
   before_action :set_paper_trail_whodunnit
 
   # GET /policies
   # GET /policies.json
   def index
-
     @policies =  policies()
   end
   def policy
@@ -21,6 +21,7 @@ class PoliciesController < ApplicationController
     if params[:history] == '1'
       history()
     end
+    
   end
   def detal
 
@@ -89,7 +90,22 @@ class PoliciesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_policy
       @policy = Policy.includes(:policy_divisions).find(params[:id])
-      @polisy_mp = @policy.policy_person_distances.includes(:mp).filter_polices(params[:policy])
+    end
+
+    def set_policy_with_mps
+      @policy = Policy.includes(:policy_divisions).find(params[:id])
+      @policy_level_up = []
+      (1..8).each do |l|
+        if  @policy.policy_person_distances.filter_polices(l.to_s).count > 0
+          @policy_level_up << l
+        end
+      end
+      if params[:policy].nil?
+        params[:policy] = @policy_level_up.first.to_s
+      end
+      if !@policy.policy_person_distances.blank?
+        @polisy_mp = @policy.policy_person_distances.includes(:mp).filter_polices(params[:policy]).where(mps: {end_date: "9999-12-31"})
+      end  
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

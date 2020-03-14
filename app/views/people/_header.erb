@@ -17,7 +17,7 @@
   <h1 class="media-heading center-justified"><%=  mp.full_name  %></h1>
 
   <div class="row list-filters clearfix">
-    <ul class="col sort-first text-uppercase">
+    <ul class="col sort-first text-uppercase d-none d-sm-none d-md-none d-lg-block">
 
       <li <%= params[:month] == "full" ? "class=disabled": "" %> >
         <%= link_to "за весь час", params.merge(month: nil), remote: true  %>
@@ -36,8 +36,9 @@
         </div>
         <% end %>
       </li>
+
     </ul>
-    <ul class="social col-4 pull-right text-uppercase">
+    <ul class="social col-sm-12 col-md-4 pull-right text-uppercase">
       <li>
         <%= link_to api_mp_path(deputy_id: mp.id, format: :csv) do %>
                     <span class="fa-stack ">
@@ -62,7 +63,13 @@
         <a href="https://www.facebook.com/sharer/sharer.php?u=<%= request.protocol  + request.host +  request.fullpath %>" target="_blank">поширити</a>
       </li>
     </ul>
-  </div>`
+    <select style="margin-top: 20px"class="mobile_select d-block d-md-none" onchange="window.location.href=this.value;">
+      <option  <%= params[:month] == "full" ? 'selected="selected"': ''%> value="<%= show_people_path(params.merge(month: nil)) %>">за весь час</option>
+          <% @month.each do |m| %>
+            <option <%= params[:month] == m.strftime('%Y-%m') ? 'selected="selected"' : "" %> value="<%= show_people_path(params.merge(month: m.strftime('%Y-%m'))) %>"><%=month(m.strftime('%Y-%m'))%></option>
+          <% end %>
+    </select>
+  </div>
   <div class="row center-justified align-items-center d-block d-md-none">
   <div class="col">
 <!--    <img class="media-object circle-photo " src="/image/<%#= mp.deputy_id %>.png" alt="<%#=  mp.full_name %>" height="200">-->
@@ -127,7 +134,7 @@
   <div class="row ">
     <h2 class="col-12 text-uppercase background-line center-justified text-xs-center">Статистика голосувань</h2>
 
-    <ul class="col-8 object-secondary" style="margin: 0 auto;">
+    <ul class="col-sm-12 col-md-8 object-secondary" style="margin: 0 auto;">
       <li>
         <span class="text-uppercase ">за </span>
         <span class="pull-right"><%= mp.mp_info.aye_voted %> голосувань</span>

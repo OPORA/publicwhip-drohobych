@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <% division.each do |d| %>
-        <div class="col-12 col-md-6" style="margin-bottom: <%=  controller.action_name == "edit" ? "120" : "25"  %>px">
+        <div class="col-12 col-md-6"" style="margin-bottom: 25px">
             <%= link_to divisions_show_path(d.division.date, d.division.number), class: "" do %>
             <div class="col-12 pull-right card" style="padding: 25px 30px">
                 <div class="row text-uppercase" style="justify-content: space-between;">
@@ -26,20 +26,15 @@
                       <%= result_support(d.support) %>
                     <!--</div>
                     <div class="col-12 col-md-4 text-uppercase" style="color:#000;font-size: 8px;line-height: 18px;">-->
+                        <div class="voted_mp">
+                        <%= result_voted(d.division.votes.find_mp(@mp.deputy_id )) %>
+                        </div>  
                     </div>
 
                 </div>
-
             </div>
             <% end %>
-          <%  if controller.action_name == "edit"  %>
-              <div class="actions">
-                <%= link_to 'Вилучити з політики', d, method: :delete, data: { confirm: 'Are you sure?' } , style: "margin:20px;"%>
-                <%= link_to 'Змінити позицію щодо політики', edit_policy_division_path(d) %>
-              </div>
-          <% end %>
         </div>
-
         <% end %>
     </div>
 </div>

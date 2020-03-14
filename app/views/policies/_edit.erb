@@ -1,8 +1,12 @@
 <div class="list-filters clearfix">
-  <ul class="sort-first text-uppercase">
+  <ul class="sort-first text-uppercase d-none d-sm-none d-md-none d-lg-block">
     <li <%= params[:sort].nil? ? "class=disabled": "" %> ><%= link_to "Опис політики", params.merge(sort: nil), remote: true %></li>
     <li <%= params[:sort] == "vote" ? "class=disabled": "" %> ><%= link_to "Пов’язані голосування (" + @policy.policy_divisions.size.to_s  + ")", params.merge(sort: :vote), remote: true %></li>
   </ul>
+   <select class="mobile_select d-block d-md-none" onchange="window.location.href=this.value;">
+      <option value="<%= edit_policy_path(@policy.id, sort: nil )%>">Опис політики</option>
+      <option <%= params[:sort] == "vote" ? 'selected="selected"': ''%> value="<%=edit_policy_path(@policy.id, sort: :vote)%>">Пов’язані голосування ( <%= @policy.policy_divisions.size %> )</option>
+    </select>
 </div>
 <% if  params[:sort].nil?  %>
     <%= render 'form', policy: @policy %>

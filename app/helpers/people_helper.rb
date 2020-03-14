@@ -1,6 +1,6 @@
 module PeopleHelper
   def placeholder
-    mp = Mp.order("RANDOM()").first
+    mp = Mp.where(end_date: "9999-12-31").order("RANDOM()").first
     return mp.last_name + " " + mp.first_name + " " + mp.middle_name
   end
   def member_role(faction, okrug)

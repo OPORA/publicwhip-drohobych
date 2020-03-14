@@ -723,3 +723,80 @@ footer {
 a.dropdown-toggle {
     cursor: pointer;
 }
+.mobile_select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none!important;
+    background-color: #fff;
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    border-bottom: 3px solid #009FE2; 
+    padding: 5px;
+    margin-bottom: 35px;
+    color: #4A4A4A;
+    outline: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    cursor: pointer;
+}
+.mobile_select::-ms-expand {
+    display: none;
+}
+.mobile_select > option {
+    text-transform: uppercase;
+    font-size: 14px;
+}
+.mobile_select_2 {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none!important;
+    background: #009FE2;
+    border-radius: 50%;
+    border: none;
+    padding: 5px;
+    margin-bottom: 35px;
+    color: #fff;
+    outline: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    cursor: pointer;
+    /* width: 36px;
+    height: 36px; */
+    padding: 12px;
+}
+.mobile_select_2::-ms-expand {
+    display: none;
+}
+.mobile_select_2 > option {
+    text-transform: uppercase;
+    font-size: 14px;
+}
+.mobile_select_fraction {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none!important;
+    background: #009FE2;
+    border-radius: 12px;
+    border: none;
+    padding: 5px;
+    margin-bottom: 35px;
+    color: #fff;
+    outline: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    cursor: pointer;
+    /* width: 36px;
+    height: 36px; */
+    padding: 7px 13px;
+}
+.mobile_select_fraction::-ms-expand {
+    display: none;
+}
+.mobile_select_fraction > option {
+    text-transform: uppercase;
+    font-size: 14px;
+}

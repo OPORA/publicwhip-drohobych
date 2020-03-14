@@ -1,41 +1,62 @@
 <div class="col-12 list-filters clearfix">
-  <ul class="sort-first text-uppercase">
+  <ul class="sort-first text-uppercase d-none d-sm-none d-md-none d-lg-block">
     <li <%= params[:sort].nil? ? "class=disabled": "" %> ><%= link_to "За прізвищем", people_path(),  :remote => true %></li>
     <li <%= params[:sort] == "faction" ? "class=disabled": "" %> ><%= link_to "За Фракцією", people_path(sort: :faction),  :remote => true %></li>
     <li <%= params[:sort] == "distric" ? "class=disabled": "" %> ><%= link_to "За Округом", people_path(sort: :distric), :remote => true %></li>
     <li <%= params[:sort] == "attendance" ? "class=disabled": "" %> ><%= link_to "За Присутністю", people_path(sort: :attendance), :remote => true %></li>
     <li <%= params[:sort] == "rebellions" ? "class=disabled": "" %> ><%= link_to "За Дотриманням фракційної дисципліни", people_path(sort: :rebellions), :remote => true %></li>
-
   </ul>
+  <select class="mobile_select d-block d-md-none" onchange="window.location.href=this.value;">
+      <option  <%= params[:sort].nil? ? 'selected="selected"': ''%> value="<%= people_path()%>">За прізвищем</option>
+      <option <%= params[:sort] == "faction" ? 'selected="selected"': ''%> value="<%=people_path(sort: :faction)%>">За Фракцією</option>
+      <option <%= params[:sort] == "distric" ? 'selected="selected"': ''%> value="<%=people_path(sort: :distric)%>">За Округом</option>
+      <option <%= params[:sort] == "attendance" ? 'selected="selected"': ''%> value="<%=people_path(sort: :attendance)%>">За Присутністю</option>
+      <option <%= params[:sort] == "rebellions" ? 'selected="selected"': ''%> value="<%=people_path(sort: :rebellions)%>">За Дотриманням фракційної дисципліни</option>	
+  </select>
 
   <% if params[:sort].nil? %>
-      <ul class="sort-name">
+      <ul class="sort-name d-none d-sm-none d-md-none d-lg-block">
         <% @filter.each do |f| %>
             <li class="<%= f == params[:filter] ? "active-fon-circle" : "" %>">
             <%= link_to(f, people_path(filter: f), remote: true)  %>
             </li>
         <% end %>
       </ul>
+      <select class="mobile_select_2 d-block d-md-none" onchange="window.location.href=this.value;">
+        <% @filter.each do |f| %>
+            <option  <%=  f == params[:filter] ? 'selected="selected"': ''%> value="<%= people_path(filter: f) %>"><%= f%></option>
+        <% end %>
+      </select>
   <% end %>
 
   <% if params[:sort] == "faction" %>
-      <ul class="sort-fraction">
+      <ul class="sort-fraction d-none d-sm-none d-md-none d-lg-block">
         <% @filter.each do |f| %>
             <li class="<%= f == params[:filter] ? "active-fon-fraction" : "" %>">
               <%= link_to(f, people_path(sort: "faction" , filter: f), remote: true)  %>
             </li>
         <% end %>
       </ul>
+      <select class="mobile_select_fraction d-block d-md-none" onchange="window.location.href=this.value;">
+        <% @filter.each do |f| %>
+            <option  <%=  f == params[:filter] ? 'selected="selected"': ''%> value="<%= people_path(sort: "faction", filter: f) %>"><%= f%></option>
+        <% end %>
+      </select>
   <% end %>
 
   <% if params[:sort] == "distric" %>
-      <ul class="sort-distric">
+      <ul class="sort-distric d-none d-sm-none d-md-none d-lg-block">
         <% @filter.each do |f| %>
             <li class="<%= f == params[:filter].to_i ? "active-fon-circle" : "" %>">
               <%= link_to(f, people_path(sort: "distric" , filter: f), remote: true)  %>
             </li>
         <% end %>
       </ul>
+      <select class="mobile_select_2 d-block d-md-none" onchange="window.location.href=this.value;">
+        <% @filter.each do |f| %>
+            <option  <%=  f == params[:filter].to_i ? 'selected="selected"': ''%> value="<%= people_path(sort: "distric", filter: f) %>"><%= f%></option>
+        <% end %>
+      </select>
   <% end %>
 
   <% if params[:sort] == "rebellions" %>

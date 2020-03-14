@@ -20,7 +20,7 @@ class PolicyPersonDistance < ApplicationRecord
     end
   end
   def self.filter_polices(param)
-    if param.nil?
+    if param=="1"
       very_strongly_for
     elsif param =="2"
       strongly_for

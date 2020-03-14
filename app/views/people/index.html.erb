@@ -18,6 +18,13 @@
               <% end %>
             </datalist>
         <% end %>
+       <script>  
+        $(document).ready(function($) {
+          $('#mp').change(function() {
+            $('#search-main').submit();
+          });
+      });
+      </script>
       </div>
     </div>
 </div>
