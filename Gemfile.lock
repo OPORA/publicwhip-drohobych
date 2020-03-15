@@ -280,6 +280,7 @@ DEPENDENCIES
   pg (~> 0.18)
   puma (~> 3.7)
   rails (~> 5.1.0)
+  rake (= 13.0.1)
   redcarpet
   sass-rails (~> 5.0)
   selenium-webdriver
@@ -291,4 +292,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.16.0
+   1.17.1
